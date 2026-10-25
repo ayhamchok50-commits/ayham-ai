@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHOK AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Tahoma,Arial;
+background:#f5f3ff;
+color:#17152b;
+}
+header{
+background:#14213d;
+color:white;
+padding:25px;
+text-align:center;
+}
+header h1{margin:0}
+header span{color:#aa98ff}
+main{max-width:700px;margin:auto;padding:20px}
+.hero{
+background:linear-gradient(135deg,#21164d,#6d4aff);
+color:white;
+padding:30px 20px;
+border-radius:20px;
+text-align:center;
+}
+.hero h2{font-size:30px}
+.hero p{line-height:1.8}
+.card{
+background:white;
+padding:22px;
+margin-top:20px;
+border-radius:18px;
+box-shadow:0 3px 15px #00000010;
+}
+select,textarea{
+width:100%;
+padding:15px;
+margin:12px 0;
+border:1px solid #ddd;
+border-radius:12px;
+font-size:16px;
+font-family:inherit;
+}
+textarea{height:130px;resize:vertical}
+button{
+background:#6d4aff;
+color:white;
+border:0;
+padding:15px;
+border-radius:12px;
+font-size:17px;
+cursor:pointer;
+margin:5px 0;
+}
+.output{
+background:#f5f3ff;
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+white-space:pre-wrap;
+line-height:1.9;
+min-height:70px;
+}
+footer{text-align:center;padding:30px;color:#777}
+</style>
+</head>
+<body>
+
+<header>
+<h1>SHOK <span>AI</span> ✨</h1>
+<p>مساعدك الذكي لصناعة المحتوى</p>
+</header>
+
+<main>
+<section class="hero">
+<h2>أهلاً فيك بعالم SHOK AI 🚀</h2>
+<p>اصنع إعلانات، منشورات، وأفكار مشاريع بخطوات بسيطة!</p>
+</section>
+
+<section class="card">
+<h2>🤖 شو بدك نساعدك فيه؟</h2>
+
+<select id="kind">
+<option value="ad">📢 إعلان لمحل</option>
+<option value="post">📱 منشور سوشال ميديا</option>
+<option value="idea">💡 فكرة مشروع</option>
+<option value="message">💬 رسالة لزبون</option>
+</select>
+
+<h3>✍️ اكتب التفاصيل</h3>
+
+<textarea id="details" placeholder="مثلاً: سوبر ماركت شوك، تنزيلات على المشروبات لمدة يومين"></textarea>
+
+<button onclick="generate()">✨ جهّز المحتوى</button>
+<button onclick="copyText()">📋 نسخ النص</button>
+
+<div id="output" class="output">
+النتيجة رح تظهر هون ❤️
+</div>
+</section>
+</main>
+
+<footer>
+SHOK AI © 2026
+<br>
+صُنع بكل حب ❤️
+</footer>
+
+<script>
+function generate(){
+const kind=document.getElementById("kind").value;
+const info=document.getElementById("details").value.trim();
+const out=document.getElementById("output");
+
+if(!info){
+out.textContent="❤️ اكتب التفاصيل بالأول!";
+return;
+}
+
+let result="";
+
+if(kind==="ad"){
+result=`🔥 عرض مميز 🔥
+
+✨ ${info}
+
+🎉 لا تفوّتوا الفرصة!
+
+📍 ناطرين زيارتكن
+📩 تواصلوا معنا لمعرفة التفاصيل
+
+❤️ SHOK AI`;
+}
+
+else if(kind==="post"){
+result=`✨ خبر حلو لإلكن!
+
+${info}
+
+🔥 تابعونا لتعرفوا كل جديد!
+
+💬 شو رأيكن؟`;
+}
+
+else if(kind==="idea"){
+result=`💡 فكرة مشروع جديدة
+
+${info}
+
+🚀 خطوات البداية:
+
+1. حدّد الزبائن المستهدفين.
+2. احسب التكاليف.
+3. جرّب الفكرة على نطاق صغير.
+4. سوّق للمشروع.
+5. طوّر فكرتك حسب النتائج.`;
+}
+
+else{
+result=`أهلاً وسهلاً فيك ❤️
+
+شكراً لتواصلك معنا!
+
+${info}
+
+يسعدنا نساعدك بأي وقت 🌟`;
+}
+
+out.textContent=result;
+}
+
+async function copyText(){
+const text=document.getElementById("output").textContent;
+
+try{
+await navigator.clipboard.writeText(text);
+alert("✅ تم نسخ النص!");
+}catch(e){
+alert("حدّد النص وانسخه يدوياً");
+}
+}
+</script>
+
+</body>
+</html>
